@@ -5,7 +5,7 @@ from django.urls import include, path
 app_name = 'accounting'
 
 urlpatterns = [
-    path('', include('accounting.apps.connect.urls', namespace="connect")),
+    path('', include('accounting.apps.connect.urls')),
     path('books', include('accounting.apps.books.urls', namespace="books")),
     path('people', include('accounting.apps.people.urls', namespace="people")),
     path('reports', include('accounting.apps.reports.urls', namespace="reports")),
