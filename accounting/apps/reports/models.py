@@ -18,7 +18,7 @@ class BusinessSettings(models.Model):
     # for automated behaviors during cross-organizations invoicing
     organization = models.OneToOneField('books.Organization',
                                         related_name="business_settings",
-                                        blank=True, null=True)
+                                        blank=True, null=True, on_delete=models.PROTECT)
 
     class Meta:
         pass
@@ -61,7 +61,7 @@ class FinancialSettings(models.Model):
     # for automated behaviors during cross-organizations invoicing
     organization = models.OneToOneField('books.Organization',
                                         related_name="financial_settings",
-                                        blank=True, null=True)
+                                        blank=True, null=True, on_delete=models.PROTECT)
 
     class Meta:
         pass
@@ -84,7 +84,7 @@ class PayRunSettings(models.Model):
     # for automated behaviors during cross-organizations invoicing
     organization = models.OneToOneField('books.Organization',
                                         related_name="payrun_settings",
-                                        blank=True, null=True)
+                                        blank=True, null=True, on_delete=models.PROTECT)
 
     class Meta:
         pass

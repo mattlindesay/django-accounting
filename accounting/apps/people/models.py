@@ -16,7 +16,7 @@ class Client(models.Model):
     country = models.CharField(max_length=50)
 
     organization = models.ForeignKey('books.Organization',
-                                     related_name="clients")
+                                     related_name="clients", on_delete=models.PROTECT)
 
     class Meta:
         pass
@@ -62,7 +62,7 @@ class Employee(models.Model):
     )
 
     organization = models.ForeignKey('books.Organization',
-                                     related_name="employees")
+                                     related_name="employees", on_delete=models.PROTECT)
 
     class Meta:
         pass

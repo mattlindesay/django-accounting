@@ -15,9 +15,9 @@ from .models import (
     Payment)
 from .utils import organization_manager
 from accounting.apps.people.models import Client, Employee
-from accounting.apps.people.forms import UserMultipleChoices
+#from accounting.apps.people.forms import UserMultipleChoices
 
-from django_select2.fields import AutoModelSelect2Field
+#from django_select2.fields import AutoModelSelect2Field
 from datetimewidget.widgets import DateWidget
 
 
@@ -43,38 +43,38 @@ class SaleInlineLineFormSet(RequiredFirstInlineFormSet):
             f.restrict_to_organization(orga)
 
 
-class ClientForOrganizationChoices(AutoModelSelect2Field):
-    queryset = Client.objects.all()
-    search_fields = (
-        'name__icontains',
-    )
+#class ClientForOrganizationChoices(AutoModelSelect2Field):
+#    queryset = Client.objects.all()
+#    search_fields = (
+#        'name__icontains',
+#    )
+#
+#    def prepare_qs_params(self, request, search_term, search_fields):
+#        """restrict to the current selected organization"""
+#        params = super().prepare_qs_params(request, search_term, search_fields)
+#        orga = organization_manager.get_selected_organization(request)
+#        params['and']['organization'] = orga
+#        return params
 
-    def prepare_qs_params(self, request, search_term, search_fields):
-        """restrict to the current selected organization"""
-        params = super().prepare_qs_params(request, search_term, search_fields)
-        orga = organization_manager.get_selected_organization(request)
-        params['and']['organization'] = orga
-        return params
 
-
-class EmployeeForOrganizationChoices(AutoModelSelect2Field):
-    queryset = Employee.objects.all()
-    search_fields = (
-        'first_name__icontains',
-        'last_name__icontains',
-        'email__icontains',
-    )
-
-    def prepare_qs_params(self, request, search_term, search_fields):
-        """restrict to the current selected organization"""
-        params = super().prepare_qs_params(request, search_term, search_fields)
-        orga = organization_manager.get_selected_organization(request)
-        params['and']['organization'] = orga
-        return params
+#class EmployeeForOrganizationChoices(AutoModelSelect2Field):
+#    queryset = Employee.objects.all()
+#    search_fields = (
+#        'first_name__icontains',
+#        'last_name__icontains',
+#        'email__icontains',
+#    )
+#
+#    def prepare_qs_params(self, request, search_term, search_fields):
+#        """restrict to the current selected organization"""
+#        params = super().prepare_qs_params(request, search_term, search_fields)
+#        orga = organization_manager.get_selected_organization(request)
+#        params['and']['organization'] = orga
+#        return params
 
 
 class OrganizationForm(ModelForm):
-    members = UserMultipleChoices(required=False)
+#    members = UserMultipleChoices(required=False)
 
     class Meta:
         model = Organization
@@ -116,7 +116,7 @@ class RestrictLineFormToOrganizationMixin(object):
 
 
 class EstimateForm(ModelForm):
-    client = ClientForOrganizationChoices()
+#    client = ClientForOrganizationChoices()
 
     class Meta:
         model = Estimate
@@ -162,7 +162,7 @@ EstimateLineFormSet = inlineformset_factory(Estimate,
 
 
 class InvoiceForm(ModelForm):
-    client = ClientForOrganizationChoices()
+#    client = ClientForOrganizationChoices()
 
     class Meta:
         model = Invoice
@@ -208,7 +208,7 @@ InvoiceLineFormSet = inlineformset_factory(Invoice,
 
 
 class BillForm(ModelForm):
-    client = ClientForOrganizationChoices()
+#    client = ClientForOrganizationChoices()
 
     class Meta:
         model = Bill
@@ -257,7 +257,7 @@ BillLineFormSet = inlineformset_factory(Bill,
 
 
 class ExpenseClaimForm(ModelForm):
-    employee = EmployeeForOrganizationChoices()
+#    employee = EmployeeForOrganizationChoices()
 
     class Meta:
         model = ExpenseClaim
